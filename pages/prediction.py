@@ -10,7 +10,7 @@ st.set_page_config(page_title="Placement Prediction", layout="wide")
 
 sidebar.load_sidebar()
 
-# Background Styling
+
 page_bg = """
 <style>
 body {
@@ -43,7 +43,7 @@ if not all(os.path.exists(path) for path in [placement_model_path, package_model
     st.error("❌ Model files not found! Please check file paths and ensure they exist in the correct directory.")
     st.stop()
 
-# ✅ Load models & scalers
+
 placement_model = joblib.load(placement_model_path)
 package_model = xgb.XGBRegressor()
 package_model.load_model(package_model_path)
@@ -72,7 +72,7 @@ if "user_inputs" not in st.session_state:
         "Applications Submitted": 10,
     }
 
-# Input Fields
+
 st.session_state.user_inputs["CGPA"] = st.number_input("CGPA (0-10)", min_value=0.0, max_value=10.0, step=0.1, value=st.session_state.user_inputs["CGPA"])
 st.session_state.user_inputs["Backlogs"] = st.number_input("Number of Backlogs", min_value=0, max_value=49, step=1, value=st.session_state.user_inputs["Backlogs"])
 st.session_state.user_inputs["10th Percentage"] = st.number_input("10th Percentage (60-100)", min_value=60.0, max_value=100.0, step=0.1, value=st.session_state.user_inputs["10th Percentage"])
@@ -84,15 +84,15 @@ st.session_state.user_inputs["Communication Skill"] = st.slider("Communication S
 st.session_state.user_inputs["Hackathon Participation"] = st.selectbox("Hackathon Participation", [0, 1], index=st.session_state.user_inputs["Hackathon Participation"], format_func=lambda x: ["No", "Yes"][x])
 st.session_state.user_inputs["Applications Submitted"] = st.number_input("Job Applications Submitted", min_value=0, max_value=100, step=1, value=st.session_state.user_inputs["Applications Submitted"])
 
-# 🏆 Prediction Button
+
 if st.button("Predict Placement"):
     user_input_df = pd.DataFrame([st.session_state.user_inputs])
 
     try:
-        # Scale features
+        
         user_input_scaled = scaler.transform(user_input_df)
         
-        # Placement prediction
+       
         placement_prediction = placement_model.predict(user_input_scaled)[0]
 
         if placement_prediction == 1:
