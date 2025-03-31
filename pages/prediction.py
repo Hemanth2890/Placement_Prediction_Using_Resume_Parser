@@ -33,10 +33,6 @@ st.title("🎓 Placement & Package Prediction Bot")
 st.write("Enter your details to predict placement chances and expected salary package.")
 
 
-current_dir = os.getcwd()
-st.write(f"📂 **Current Working Directory:** {current_dir}")
-st.write(f"📄 **Files in Directory:** {os.listdir(current_dir)}")
-
 placement_model_path = os.path.join(current_dir, "placement_prediction_model.pkl")
 package_model_path = os.path.join(current_dir, "xgb_package_model.json")
 scaler_path = os.path.join(current_dir, "scaler.pkl")
