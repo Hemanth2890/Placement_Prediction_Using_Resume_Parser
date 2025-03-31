@@ -6,7 +6,7 @@ import os
 import sidebar
 
 load_dotenv()
-genai.configure(api_key=AIzaSyCaNfYJCTRIJR5ppjDxk1HFPzqUD1M7ci4)
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def extract_text_from_pdf(uploaded_file):
     """Extracts text from uploaded PDF using pdfplumber."""
