@@ -32,25 +32,17 @@ st.markdown(page_bg, unsafe_allow_html=True)
 st.title("🎓 Placement & Package Prediction Bot")
 st.write("Enter your details to predict placement chances and expected salary package.")
 
-# 🔍 Debugging: Print working directory and files
+
 current_dir = os.getcwd()
 st.write(f"📂 **Current Working Directory:** {current_dir}")
 st.write(f"📄 **Files in Directory:** {os.listdir(current_dir)}")
 
-# ✅ Ensure model files exist with absolute paths
 placement_model_path = os.path.join(current_dir, "placement_prediction_model.pkl")
 package_model_path = os.path.join(current_dir, "xgb_package_model.json")
 scaler_path = os.path.join(current_dir, "scaler.pkl")
 scaler_package_path = os.path.join(current_dir, "scaler_package.pkl")
 
-# 🔍 Debugging: Print paths and check existence
-st.write("🔍 **Checking Model Paths:**")
-st.write(f"📄 `{placement_model_path}` Exists? {os.path.exists(placement_model_path)}")
-st.write(f"📄 `{package_model_path}` Exists? {os.path.exists(package_model_path)}")
-st.write(f"📄 `{scaler_path}` Exists? {os.path.exists(scaler_path)}")
-st.write(f"📄 `{scaler_package_path}` Exists? {os.path.exists(scaler_package_path)}")
 
-# ❌ Stop execution if any file is missing
 if not all(os.path.exists(path) for path in [placement_model_path, package_model_path, scaler_path, scaler_package_path]):
     st.error("❌ Model files not found! Please check file paths and ensure they exist in the correct directory.")
     st.stop()
@@ -62,14 +54,14 @@ package_model.load_model(package_model_path)
 scaler = joblib.load(scaler_path)
 scaler_package = joblib.load(scaler_package_path)
 
-# Feature Columns
+
 feature_columns = [
     "CGPA", "Backlogs", "10th Percentage", "12th Percentage", 
     "Internships", "Coding Score", "Certifications", 
     "Communication Skill", "Hackathon Participation", "Applications Submitted"
 ]
 
-# Initialize Session State
+
 if "user_inputs" not in st.session_state:
     st.session_state.user_inputs = {
         "CGPA": 7.0,
