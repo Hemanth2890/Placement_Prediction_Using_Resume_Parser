@@ -31,12 +31,30 @@ st.markdown(page_bg, unsafe_allow_html=True)
 st.title("🎓 Placement & Package Prediction Bot")
 st.write("Enter your details to predict placement chances and expected salary package.")
 
-if os.path.exists("placement_prediction_model.pkl") and os.path.exists("xgb_package_model.json") and os.path.exists("scaler.pkl") and os.path.exists("scaler_package.pkl"):
-    placement_model = joblib.load("placement_prediction_model.pkl")
+# Absolute paths
+placement_model_path = os.path.abspath("placement_prediction_model.pkl")
+package_model_path = os.path.abspath("xgb_package_model.json")
+scaler_path = os.path.abspath("scaler.pkl")
+scaler_package_path = os.path.abspath("scaler_package.pkl")
+
+# Debugging print statements
+print("Checking Paths:")
+print(placement_model_path, os.path.exists(placement_model_path))
+print(package_model_path, os.path.exists(package_model_path))
+print(scaler_path, os.path.exists(scaler_path))
+print(scaler_package_path, os.path.exists(scaler_package_path))
+
+if (
+    os.path.exists(placement_model_path) and
+    os.path.exists(package_model_path) and
+    os.path.exists(scaler_path) and
+    os.path.exists(scaler_package_path)
+):
+    placement_model = joblib.load(placement_model_path)
     package_model = xgb.XGBRegressor()
-    package_model.load_model("xgb_package_model.json")
-    scaler = joblib.load("scaler.pkl")
-    scaler_package = joblib.load("scaler_package.pkl")
+    package_model.load_model(package_model_path)
+    scaler = joblib.load(scaler_path)
+    scaler_package = joblib.load(scaler_package_path)
 else:
     st.error("❌ Model files not found! Please check the file paths.")
     st.stop()
