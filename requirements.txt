@@ -1,0 +1,8 @@
+streamlit
+pdfplumber
+xgboost
+numpy
+pandas
+joblib
+google-generativeai
+python-dotenv
