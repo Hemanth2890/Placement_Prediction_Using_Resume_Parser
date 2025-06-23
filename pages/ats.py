@@ -22,7 +22,7 @@ def extract_text_from_pdf(uploaded_file):
 
 def parse_resume_with_gemini(text):
     """Uses Gemini AI to extract structured resume information."""
-    model = genai.GenerativeModel("gemini-2.5-pro")
+    model = genai.GenerativeModel("gemini-2.5-flash-preview-05-20")
 
     prompt = f"""
     You are an AI-powered resume parser. Extract key details from the following resume text:
@@ -68,7 +68,7 @@ def parse_resume_with_gemini(text):
 
 def analyze_with_gemini(resume_text, jd_text):
     """Uses Gemini AI to compare resume and JD for ATS-style matching."""
-    model = genai.GenerativeModel("gemini-2.5-pro")
+    model = genai.GenerativeModel("gemini-2.5-flash-preview-05-20")
 
     prompt = f"""
     You are an AI-powered ATS (Applicant Tracking System). Analyze the following resume against the given job description.
