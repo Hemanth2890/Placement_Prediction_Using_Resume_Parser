@@ -68,7 +68,7 @@ def parse_resume_with_gemini(text):
 
 def analyze_with_gemini(resume_text, jd_text):
     """Uses Gemini AI to compare resume and JD for ATS-style matching."""
-    model = genai.GenerativeModel("gemini-1.5-pro-latest")
+    model = genai.GenerativeModel("gemini-2.5-pro")
 
     prompt = f"""
     You are an AI-powered ATS (Applicant Tracking System). Analyze the following resume against the given job description.
