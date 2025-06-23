@@ -12,15 +12,17 @@ The AI Resume Analyzer &amp; ATS Matcher extracts key details from resumes using
  2. Set Up a Virtual Environment 
 
     python3 -m venv venv
+
     source venv/bin/activate        # For Linux/macOS
+
     venv\Scripts\activate           # For Windows
 
- 3. Install Dependencies
+ 4. Install Dependencies
     Install the required Python packages:
 
     pip install -r requirements.txt
 
- 4. Set Your Gemini API Key
+ 5. Set Your Gemini API Key
     This project uses Google Gemini API (via google.generativeai). You need to set your API key:
 
     On Linux/macOS:
@@ -29,11 +31,11 @@ The AI Resume Analyzer &amp; ATS Matcher extracts key details from resumes using
     On Windows (Command Prompt):
     set GOOGLE_API_KEY=your-api-key-here
 
- 5. Prepare Your Resume File
+ 6. Prepare Your Resume File
     Place a sample resume PDF in the appropriate folder (e.g., uploads or wherever your code reads from).
     Update text = extract_text_from_resume(filepath) accordingly if needed.
 
- 6. Run the Application
+ 7. Run the Application
     If you are using Streamlit, run:
     
     streamlit run app.py
